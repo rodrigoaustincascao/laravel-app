@@ -1,0 +1,68 @@
+version: "3"
+
+volumes:
+    laravel-app-postgres-volume:
+    laravel-app-postgres-teste-volume:
+    laravel-app-redis-volume:
+
+
+networks:
+    laranet:
+        driver: bridge
+
+services:
+    ######## APP ########
+    laravel-app:
+        build:
+            context: ..
+            dockerfile: .docker/Dockerfile
+        command: "/usr/local/bin/start"
+        working_dir: /var/www/app
+        volumes:
+            - ../:/var/www/app:cached
+        ports:
+            - 8081:8080
+        depends_on:
+            - laravel-app-postgres
+            - laravel-app-postgres-teste
+            - laravel-app-redis
+        networks:
+            - laranet
+
+    ######## REDIS ########
+    laravel-app-redis:
+        image: redis:7.0.5
+        volumes:
+            - laravel-app-redis-volume:/data
+        ports:
+            - 6380:6379
+        networks:
+            - laranet
+
+    ######## POSTGRES ########
+    laravel-app-postgres:
+        image: postgres:14.6
+        environment:
+            - POSTGRES_DB=laravel-app-db
+            - POSTGRES_USER=laravel-app
+            - POSTGRES_PASSWORD=laravel-app
+        volumes:
+            - laravel-app-postgres-volume:/var/lib/postgresql/data
+        ports:
+            - 5433:5432
+        networks:
+            - laranet
+
+    ######## POSTGRES (TESTE AUTOMATIZADO) ########
+    laravel-app-postgres-teste:
+        image: postgres:14.6
+        environment:
+            - POSTGRES_DB=laravel-app-db
+            - POSTGRES_USER=laravel-app
+            - POSTGRES_PASSWORD=laravel-app
+        volumes:
+            - laravel-app-postgres-teste-volume:/var/lib/postgresql/data
+        ports:
+            - 54178:5432
+        networks:
+            - laranet
