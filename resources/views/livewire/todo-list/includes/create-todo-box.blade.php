@@ -2,7 +2,7 @@
     <div class="mx-auto">
         <div id="create-form" class="hover:shadow p-6 bg-white border-blue-500 border-t-2">
             <div class="flex ">
-                <h2 class="font-semibold text-lg text-gray-800 mb-5">Create New Todo</h2>
+                <h2 class="font-semibold text-lg text-gray-800 mb-5">Coisas para fazer...</h2>
             </div>
             <div>
                 <form>
@@ -17,9 +17,7 @@
                             @enderror
 
                     </div>
-                    <button wire:click.prevent='create' type="submit"
-                        class="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Create
-                        +</button>
+                    <button wire:click.prevent='create' type="submit" class="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">Adicionar</button>
                     @if(session('success'))
                         <span class="text-green-500 text-xs">{{session('success')}}</span>
                     @endif

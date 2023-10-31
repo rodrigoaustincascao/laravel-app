@@ -46,8 +46,8 @@
     <span class="text-xs text-gray-500"> {{$todo->created_at}} </span>
     <div class="mt-3 text-xs text-gray-700">
         @if ($editingTodoID==$todo->id)
-        <button wire:click='update' class="mt-3 px-4 py-2 bg-teal-500 text-white font-semibold rounded hover:bg-teal-600">Update</button>
-        <button wire:click='cancelEdit' class="mt-3 px-4 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600">Cancel</button>
+        <button wire:click='update' class="mt-3 px-4 py-2 bg-teal-500 text-white font-semibold rounded hover:bg-teal-600">Atualizar</button>
+        <button wire:click='cancelEdit' class="mt-3 px-4 py-2 bg-red-500 text-white font-semibold rounded hover:bg-red-600">Cancelar</button>
             
         @endif
 

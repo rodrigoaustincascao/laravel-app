@@ -5,7 +5,7 @@
             <path stroke-linecap="round" stroke-linejoin="round"
                 d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
         </svg>
-        <input wire:model.live.debounce.250ms='search' type="text" placeholder="Search..."
+        <input wire:model.live.debounce.250ms='search' type="text" placeholder="Buscar..."
             class="bg-gray-100 ml-2 rounded px-4 py-2 hover:bg-gray-100" />
     </div>
     {{-- <span class="text-red-500 text-xs block mt-2">Error</span> --}}
