@@ -1,10 +1,11 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
-use App\Http\Controllers\LoginController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,10 @@ use App\Http\Controllers\LoginController;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/todo', function () {
+    return view('livewire.todo-list.todo-app');
 });
 
 // Route::get('/auth/redirect', [LoginController::class, 'redirect']);
